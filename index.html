@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kerry Lewis Community</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#f2f0ea;color:#17222e;padding-bottom:76px}
+header{position:sticky;top:0;z-index:10;background:#0a2340;color:#fff;padding:12px 16px;display:flex;gap:10px;align-items:center}
+header b{font-size:17px} header span{color:#d9b45c}
+#search{flex:1;padding:9px 12px;border-radius:20px;border:1px solid #33475e;background:#122f52;color:#fff}
+.banner{background:#fff3cd;padding:10px 14px;font-size:13px;border-bottom:1px solid #e6c87a}
+.view{display:none;padding:14px} .view.active{display:block}
+.card{background:#fff;border:1px solid #ddd6c6;border-radius:12px;padding:14px;margin-bottom:14px}
+.card h2,.card h3{margin:0 0 8px} .muted{color:#68778a;font-size:13px}
+.check{color:#1d9bf0;font-weight:900}
+textarea,input[type=text],input[type=email],input[type=date]{width:100%;padding:11px;border:1px solid #c9c0aa;border-radius:8px;font-size:15px;margin:6px 0}
+button{padding:10px 16px;border:none;border-radius:20px;background:#0a2340;color:#fff;font-weight:700;cursor:pointer}
+button.gold{background:#c9a227;color:#111} button.ghost{background:#eef2f7;color:#0a2340}
+.post-actions button{background:#f2f0ea;color:#17222e;margin:6px 6px 0 0}
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd6c6;display:flex;z-index:10}
+nav button{flex:1;background:#fff;color:#42505e;border-radius:0;padding:12px 2px;font-size:12px}
+nav button.active{color:#0a2340;border-top:3px solid #c9a227}
+ul{padding-left:18px} li{margin:6px 0}
+a{color:#0a2340;font-weight:600}
+.ev{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #eee}
+.ev b{color:#0a2340}
+</style>
+</head>
+<body>
+<div class="banner"><strong>Community — Coming Soon · Waitlist only.</strong> This is a preview landing page, not live accounts yet. No account is created here and nothing is saved. Join the waitlist below and you will be invited by email when accounts open. <a href="https://drkerryblewis.org">Back to drkerryblewis.org</a></div>
+<header><b>Kerry Lewis <span>Community</span></b><input id="search" type="search" placeholder="Search posts…" oninput="filterFeed(this.value)"></header>
+<div class="banner">Test build — posts and sign-ups in this app are kept only on this phone for testing. This is the personal community of Dr. Kerry B. Lewis. It is <b>not</b> an official government website.</div>
+
+<section class="view active" id="v-home">
+  <div class="card"><h2>Welcome to the Community</h2><p>Books, issues, and neighbors — in one place. Read free, join the conversation, and get invited when full accounts open.</p><p><button class="gold" onclick="showTab('feed')">Go to the Feed</button> <button onclick="showTab('waitlist')">Join the Waitlist</button></p></div>
+  <div class="card"><h3>Upcoming Events</h3>
+    <div class="ev"><div>📖</div><div><b>Called 7 — Chapter 1 drops</b><br><span class="muted">October 25, 2026 at 9:00 AM</span></div></div>
+    <div class="ev"><div>🏛️</div><div><b>LA City Council Meeting</b><br><span class="muted">October 27, 2026 at 10:00 AM, Room 340, City Hall</span></div></div>
+    <div class="ev"><div>✉️</div><div><b>GayMail launches</b><br><span class="muted">January 1, 2027</span></div></div>
+  </div>
+  <div class="card"><h3>Community Chats</h3><ul><li>LA Readers</li><li>Hollywood Neighbors</li><li>Make It or Break It Fans</li></ul><h3>Group Chats</h3><ul><li>Book Club</li><li>City Hall Watch</li></ul><h3>Online Contacts</h3><ul><li>Dr. Kerry B. Lewis <span class="check">✓</span> — verified owner</li><li>Community Moderators</li></ul></div>
+  <div class="card"><h3>Books</h3><ul>
+    <li><b>Make It or Break It</b> — Noir Crime Thriller, 4 chapters out. <a href="https://drkerryblewis.org/#books">Read free</a> · Download $11.99 (email order on the site)</li>
+    <li><b>Called 7</b> — Horror Mystery. Chapter 1 drops October 25, 2026.</li>
+    <li><b>Jerking Death 1</b> — A Dark Pulse Original Series. Begins January 15, 2027.</li>
+    <li><b>The Christmas Room 7</b> — An Escape-Room Mystery. Unlocks December 25, 2026.</li>
+  </ul><h3>Issues</h3><p>End failed leadership. Fix homelessness. Lower the cost of living. Full plans at <a href="https://drkerryblewis.org/#issues">drkerryblewis.org — The Issues</a>.</p></div>
+</section>
+
+<section class="view" id="v-feed">
+  <div class="card"><h3>What's on your mind?</h3><textarea id="composer" rows="3" placeholder="Share something with the community…"></textarea><p><button class="gold" onclick="postIt()">Post</button></p><p class="muted" id="postMsg"></p></div>
+  <div id="feedList">
+    <article class="card post" data-text="called 7 chapter 1 drops october 25 kerry lewis">
+      <p><b>Dr. Kerry B. Lewis <span class="check">✓</span></b> <span class="muted">· verified owner</span></p>
+      <p>Called 7 — Chapter 1 drops tomorrow, October 25 at 9 AM. A chest marked only with the number 7. What's inside was never meant to be opened.</p>
+      <div class="post-actions"><button onclick="like(this)">👍 Like <span>128</span></button><button onclick="comment(this)">💬 Comment</button><button onclick="share(this)">↗ Share <span>9</span></button></div><div class="comments"></div>
+    </article>
+    <article class="card post" data-text="make it or break it chapter 4 out free read">
+      <p><b>Dr. Kerry B. Lewis <span class="check">✓</span></b> <span class="muted">· verified owner</span></p>
+      <p>Make It or Break It — Chapter 4, “The Guy You Don't Like,” is out now and free to read on the site. Download your copy for $11.99.</p>
+      <div class="post-actions"><button onclick="like(this)">👍 Like <span>96</span></button><button onclick="comment(this)">💬 Comment</button><button onclick="share(this)">↗ Share <span>14</span></button></div><div class="comments"></div>
+    </article>
+    <article class="card post" data-text="community welcome sample member">
+      <p><b>Sample Member</b> <span class="muted">· demo post, no blue check</span></p>
+      <p>Excited for this community — the books and the Los Angeles conversation, all in one place.</p>
+      <div class="post-actions"><button onclick="like(this)">👍 Like <span>12</span></button><button onclick="comment(this)">💬 Comment</button><button onclick="share(this)">↗ Share <span>1</span></button></div><div class="comments"></div>
+    </article>
+  </div>
+</section>
+
+<section class="view" id="v-groups">
+  <div class="card"><h2>Groups</h2><ul>
+    <li>LA Readers <button class="ghost" onclick="joinBtn(this)">Join</button></li>
+    <li>Make It or Break It Fans <button class="ghost" onclick="joinBtn(this)">Join</button></li>
+    <li>Hollywood Neighbors <button class="ghost" onclick="joinBtn(this)">Join</button></li>
+    <li>GayMail Early Users <button class="ghost" onclick="joinBtn(this)">Join</button></li>
+  </ul></div>
+  <div class="card"><h3>Community Chats</h3><p>LA Readers · Hollywood Neighbors · Make It or Break It Fans</p><h3>Group Chats</h3><p>Book Club · City Hall Watch</p></div>
+</section>
+
+<section class="view" id="v-events">
+  <div class="card"><h2>Upcoming Events</h2>
+    <p><b>Called 7 — Chapter 1 drops</b><br>October 25, 2026 at 9:00 AM</p>
+    <p><b>LA City Council Meeting</b><br>October 27, 2026 at 10:00 AM, Room 340, City Hall</p>
+    <p><b>GayMail launches</b><br>January 1, 2027</p>
+    <p><b>Jerking Death 1 begins</b><br>January 15, 2027</p>
+  </div>
+</section>
+
+<section class="view" id="v-profile">
+  <div class="card"><h2>Dr. Kerry B. Lewis <span class="check">✓</span></h2><p class="muted">Verified owner of this community · Business owner · Author · Publisher · Los Angeles, California</p><p>“End failed leadership. Fix homelessness. Lower the cost of living.”</p><p><button class="gold" onclick="showTab('books')">My Books</button> <button onclick="showTab('verify')">Get the Blue Check</button></p></div>
+  <div class="card"><h3>About this app</h3><p>This is a personal community site. It is not an official government website, and it carries no government seal or branding.</p><p><a href="https://drkerryblewis.org/privacy">Privacy Policy (drkerryblewis.org/privacy)</a></p></div>
+</section>
+
+<section class="view" id="v-books">
+  <div class="card"><h2>Books</h2><p>Every series is free to read on the site. Downloads are $11.99 by email order.</p><ul>
+    <li><b>Make It or Break It</b> — 4 chapters out now</li>
+    <li><b>Called 7</b> — Chapter 1, October 25, 2026</li>
+    <li><b>Jerking Death 1</b> — January 15, 2027</li>
+    <li><b>The Christmas Room 7</b> — December 25, 2026</li>
+  </ul><p><a href="https://drkerryblewis.org/#books">Open the Bookstore on drkerryblewis.org</a></p></div>
+</section>
+
+<section class="view" id="v-signup">
+  <div class="card"><h2>Sign Up — Age Verified</h2><p>You must be 18 or older to join. Date of birth is required, and anyone under 18 is blocked.</p>
+  <label>Name</label><input id="su-name" type="text" placeholder="Your name">
+  <label>Email</label><input id="su-email" type="email" placeholder="you@example.com">
+  <label>Username you want</label><input id="su-user" type="text" placeholder="Username">
+  <label>Date of birth</label><input id="su-dob" type="date">
+  <p><button class="gold" onclick="ageCheck()">Check My Age</button></p><p id="ageMsg"></p>
+  <p class="muted">This test build does not create a real account and does not collect ID documents. Full verification for a blue check is a separate, admin-approved step — see “Get the Blue Check.”</p>
+  <p><button onclick="showTab('waitlist')">Join the Waitlist Instead</button></p></div>
+</section>
+
+<section class="view" id="v-verify">
+  <div class="card"><h2>Get the Blue Check</h2><p>How verification works:</p><ol><li><b>Request</b> — send a verification request.</li><li><b>Verify yourself</b> — prove who you are when accounts open (details will be given then; no ID is collected in this test build).</li><li><b>Admin approval</b> — the check appears only after approval. It can be removed if rules are broken.</li></ol>
+  <label>Your name</label><input id="vc-name" type="text" placeholder="Your name">
+  <label>Your email</label><input id="vc-email" type="email" placeholder="you@example.com">
+  <p><button class="gold" onclick="verifyMail()">Send Verification Request</button></p><p id="vcMsg" class="muted"></p></div>
+</section>
+
+<section class="view" id="v-waitlist">
+  <div class="card"><h2>Join the Community Waitlist</h2><p>Accounts are not open yet. Join the waitlist and you will be invited in order when the community opens.</p>
+  <label>Name</label><input id="wl-name" type="text" placeholder="Your name">
+  <label>Email</label><input id="wl-email" type="email" placeholder="you@example.com">
+  <label>Username you want</label><input id="wl-user" type="text" placeholder="Username">
+  <p><label><input id="wl-adult" type="checkbox"> I confirm I am 18 years or older</label></p>
+  <p class="muted">No ID is collected at the waitlist stage. Your details are sent by email to info@drkerryblewis.org — nothing is stored on a server by this test build.</p>
+  <p><button class="gold" onclick="waitlistMail()">Join the Waitlist</button></p><p id="wlMsg"></p></div>
+</section>
+
+<nav>
+  <button class="active" data-tab="home" onclick="showTab('home')">🏠<br>Home</button>
+  <button data-tab="feed" onclick="showTab('feed')">📰<br>Feed</button>
+  <button data-tab="groups" onclick="showTab('groups')">👥<br>Groups</button>
+  <button data-tab="events" onclick="showTab('events')">📅<br>Events</button>
+  <button data-tab="profile" onclick="showTab('profile')">👤<br>Profile</button>
+</nav>
+<script>
+function showTab(n){
+  document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active')});
+  var el=document.getElementById('v-'+n); if(el) el.classList.add('active');
+  document.querySelectorAll('nav button').forEach(function(b){b.classList.toggle('active', b.getAttribute('data-tab')===n)});
+  window.scrollTo(0,0);
+}
+function filterFeed(q){
+  q=(q||'').toLowerCase();
+  document.querySelectorAll('.post').forEach(function(p){ p.style.display = (!q || p.getAttribute('data-text').indexOf(q)>-1) ? 'block' : 'none'; });
+  if(q) showTab('feed');
+}
+function like(btn){
+  var s=btn.querySelector('span'); var n=parseInt(s.textContent,10);
+  if(btn.classList.contains('on')){ s.textContent=n-1; btn.classList.remove('on'); }
+  else { s.textContent=n+1; btn.classList.add('on'); }
+}
+function share(btn){
+  var s=btn.querySelector('span'); s.textContent=parseInt(s.textContent,10)+1;
+  alert('Link copied (demo — this test build does not post anywhere).');
+}
+function comment(btn){
+  var box=btn.closest('.post').querySelector('.comments');
+  var t=prompt('Add a comment (kept only on this phone for testing):');
+  if(t){ var p=document.createElement('p'); p.textContent='You: '+t; box.appendChild(p); }
+}
+function postIt(){
+  var t=document.getElementById('composer').value.trim();
+  if(!t){ document.getElementById('postMsg').textContent='Write something first.'; return; }
+  var a=document.createElement('article'); a.className='card post'; a.setAttribute('data-text', t.toLowerCase());
+  a.innerHTML='<p><b>You</b> <span class="muted">· just now · test build</span></p><p></p><div class="post-actions"><button onclick="like(this)">👍 Like <span>0</span></button><button onclick="comment(this)">💬 Comment</button><button onclick="share(this)">↗ Share <span>0</span></button></div><div class="comments"></div>';
+  a.querySelectorAll('p')[1].textContent=t;
+  document.getElementById('feedList').prepend(a);
+  document.getElementById('composer').value='';
+  document.getElementById('postMsg').textContent='Posted — kept only on this phone for testing.';
+  showTab('feed');
+}
+function joinBtn(b){ b.textContent = (b.textContent==='Join') ? 'Joined ✓' : 'Join'; }
+function ageCheck(){
+  var dob=document.getElementById('su-dob').value;
+  var msg=document.getElementById('ageMsg');
+  if(!dob){ msg.textContent='Date of birth is required.'; return; }
+  var d=new Date(dob); var now=new Date(); var age=now.getFullYear()-d.getFullYear();
+  var m=now.getMonth()-d.getMonth(); if(m<0 || (m===0 && now.getDate()<d.getDate())) age--;
+  if(age<18){ msg.textContent='Sign-up blocked — you must be 18 or older.'; }
+  else { msg.textContent='Age check passed — you are '+age+'. This test build does not create a real account yet; join the waitlist to be invited when accounts open.'; }
+}
+function mailto(to, subject, body){
+  window.location.href='mailto:'+to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+}
+function waitlistMail(){
+  if(!document.getElementById('wl-adult').checked){ document.getElementById('wlMsg').textContent='Please confirm you are 18 or older.'; return; }
+  var body='Name: '+document.getElementById('wl-name').value+'\nEmail: '+document.getElementById('wl-email').value+'\nUsername wanted: '+document.getElementById('wl-user').value+'\n18 or older: Yes\n\nPlease add me to the community waitlist.';
+  mailto('info@drkerryblewis.org', 'Community Waitlist — '+document.getElementById('wl-user').value, body);
+  document.getElementById('wlMsg').textContent='Your email app is opening — send that email to join the waitlist.';
+}
+function verifyMail(){
+  var body='Name: '+document.getElementById('vc-name').value+'\nEmail: '+document.getElementById('vc-email').value+'\n\nPlease consider me for a blue check mark verification. I understand approval is required and no ID is collected in the test build.';
+  mailto('info@drkerryblewis.org', 'Blue Check Verification Request — '+document.getElementById('vc-name').value, body);
+  document.getElementById('vcMsg').textContent='Your email app is opening — send that email to request verification.';
+}
+</script>
+</body>
+</html>
